@@ -40,11 +40,11 @@ const App = () => {
     );
     updateTimeoutId(timeout);
   };
-
+  let length = search.length;
   return (
     <div>
       <Header exercises={exercises} onTextChange={onTextChange} />
-      {exercises && <AboutCard />}
+      {length === 0 && <AboutCard />}
       <ExerciseList />
     </div>
   );
