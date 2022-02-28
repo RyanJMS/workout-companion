@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
+import AboutCard from "./components/AboutCard";
+import ExerciseList from "./components/ExerciseList";
+import "./App.css";
 
 const App = () => {
   const [exercises, setExercises] = useState([]);
@@ -31,13 +34,18 @@ const App = () => {
   const onTextChange = (event) => {
     clearTimeout(timeoutId);
     setSearch(event.target.value);
-    const timeout = setTimeout(() => fetchData(event.target.value), 500);
+    const timeout = setTimeout(
+      () => fetchData(event.target.value.toLowerCase()),
+      500
+    );
     updateTimeoutId(timeout);
   };
 
   return (
     <div>
       <Header exercises={exercises} onTextChange={onTextChange} />
+      {exercises && <AboutCard />}
+      <ExerciseList />
     </div>
   );
 };

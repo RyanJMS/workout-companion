@@ -62,9 +62,6 @@ export default function Header({ exercises, onTextChange }) {
           >
             Workout Companion
           </Typography>
-          <Typography variant="h6">
-            Search for exercises by body part
-          </Typography>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
