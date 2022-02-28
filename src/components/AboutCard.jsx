@@ -1,13 +1,18 @@
 import React from "react";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Grid, CssBaseline, Paper, Typography } from "@mui/material";
 
 const AboutCard = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Paper>
-        <Typography>About</Typography>
-      </Paper>
-    </Box>
+    <Grid>
+      <Grid item align="center">
+        <CssBaseline />
+        <Paper elevation={8} style={{ width: "50%", marginTop: "20px" }}>
+          <Typography variant="body1" align="center">
+            Search for exercises by body part...
+          </Typography>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 
