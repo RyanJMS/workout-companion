@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "./components/Header";
 
 const App = () => {
   const [exercises, setExercises] = useState([]);
@@ -34,7 +35,11 @@ const App = () => {
     updateTimeoutId(timeout);
   };
 
-  return <div>App</div>;
+  return (
+    <div>
+      <Header exercises={exercises} onTextChange={onTextChange} />
+    </div>
+  );
 };
 
 export default App;
