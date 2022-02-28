@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import AboutCard from "./components/AboutCard";
 import ExerciseList from "./components/ExerciseList";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [exercises, setExercises] = useState([]);
@@ -47,11 +47,15 @@ const App = () => {
   };
   let length = search.length;
   return (
-    <div>
-      <Header exercises={exercises} onTextChange={onTextChange} />
-      {length === 0 && <AboutCard />}
-      <ExerciseList exercises={exercises} capitalize={capitalize} />
-    </div>
+    <Router basename="/">
+      <Header onTextChange={onTextChange} />
+
+      <ExerciseList
+        exercises={exercises}
+        capitalize={capitalize}
+        length={length}
+      />
+    </Router>
   );
 };
 

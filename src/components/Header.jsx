@@ -6,6 +6,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
+import "../App.css";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -14,10 +16,11 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: "#7C98B3",
   },
+  marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(3),
     width: "auto",
   },
 }));
@@ -40,16 +43,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
 }));
 
-export default function Header({ exercises, onTextChange }) {
+export default function Header({ onTextChange }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -60,12 +60,12 @@ export default function Header({ exercises, onTextChange }) {
         <Toolbar>
           <Typography
             variant="h5"
-            noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
           >
             Workout Companion
           </Typography>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
