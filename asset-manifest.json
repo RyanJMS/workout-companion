@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/workout-companion/static/css/main.75af841c.css",
+    "main.js": "/workout-companion/static/js/main.a500c3d5.js",
+    "index.html": "/workout-companion/index.html",
+    "main.75af841c.css.map": "/workout-companion/static/css/main.75af841c.css.map",
+    "main.a500c3d5.js.map": "/workout-companion/static/js/main.a500c3d5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.75af841c.css",
+    "static/js/main.a500c3d5.js"
+  ]
+}
