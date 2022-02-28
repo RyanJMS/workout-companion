@@ -31,6 +31,11 @@ const App = () => {
       });
   };
 
+  const capitalize = (str, lower = false) =>
+    (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
+      match.toUpperCase()
+    );
+
   const onTextChange = (event) => {
     clearTimeout(timeoutId);
     setSearch(event.target.value);
@@ -45,7 +50,7 @@ const App = () => {
     <div>
       <Header exercises={exercises} onTextChange={onTextChange} />
       {length === 0 && <AboutCard />}
-      <ExerciseList exercises={exercises} />
+      <ExerciseList exercises={exercises} capitalize={capitalize} />
     </div>
   );
 };
