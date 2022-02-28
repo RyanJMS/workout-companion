@@ -45,7 +45,7 @@ const App = () => {
     <div>
       <Header exercises={exercises} onTextChange={onTextChange} />
       {length === 0 && <AboutCard />}
-      <ExerciseList />
+      <ExerciseList exercises={exercises} />
     </div>
   );
 };

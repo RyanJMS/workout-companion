@@ -52,7 +52,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Header({ exercises, onTextChange }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "#536B78" }}>
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "#536B78", marginBottom: "20px" }}
+        className="appbar"
+      >
         <Toolbar>
           <Typography
             variant="h5"

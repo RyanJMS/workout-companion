@@ -6,8 +6,8 @@ const AboutCard = () => {
     <Grid>
       <Grid item align="center">
         <CssBaseline />
-        <Paper elevation={8} style={{ width: "50%", marginTop: "20px" }}>
-          <Typography variant="body1" align="center">
+        <Paper elevation={8} style={{ width: "50%" }}>
+          <Typography variant="h6" align="center">
             Search for exercises by body part...
           </Typography>
         </Paper>
