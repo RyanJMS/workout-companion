@@ -6,6 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -49,12 +50,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Header({ onTextChange }) {
+export default function Header({ onTextChange, handleChange, select }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="static"
-        style={{ backgroundColor: "#536B78", marginBottom: "20px" }}
+        style={{
+          backgroundColor: "#536B78",
+          marginBottom: "20px",
+          paddingTop: "5px",
+        }}
         className="appbar"
       >
         <Toolbar>
@@ -66,16 +71,27 @@ export default function Header({ onTextChange }) {
             Workout Companion
           </Typography>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              onChange={(event) => onTextChange(event)}
-            />
-          </Search>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Body Part</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Body Part"
+              value={select}
+              onChange={handleChange}
+            >
+              <MenuItem value="back">Back</MenuItem>
+              <MenuItem value="cardio">Cardio</MenuItem>
+              <MenuItem value="chest">Chest</MenuItem>
+              <MenuItem value="lower arms">Lower Arms</MenuItem>
+              <MenuItem value="lower legs">Lower Legs</MenuItem>
+              <MenuItem value="neck">Neck</MenuItem>
+              <MenuItem value="shoulders">Shoulders</MenuItem>
+              <MenuItem value="upper arms">Upper Arms</MenuItem>
+              <MenuItem value="upper legs">Upper Legs</MenuItem>
+              <MenuItem value="waist">Waist</MenuItem>
+            </Select>
+          </FormControl>
         </Toolbar>
       </AppBar>
     </Box>

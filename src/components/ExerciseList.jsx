@@ -11,9 +11,8 @@ import {
 } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import AboutCard from "./AboutCard";
 
-const ExerciseList = ({ exercises, capitalize, length }) => {
+const ExerciseList = ({ exercises, capitalize }) => {
   useEffect(() => {
     AOS.init({
       // Global settings:
@@ -39,7 +38,6 @@ const ExerciseList = ({ exercises, capitalize, length }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {length === 0 && <AboutCard />}
       <CssBaseline />
       <Container>
         <Grid container spacing={2} justify="center">

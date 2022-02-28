@@ -8,6 +8,7 @@ const App = () => {
   const [exercises, setExercises] = useState([]);
   const [search, setSearch] = useState("");
   const [timeoutId, updateTimeoutId] = useState();
+  const [select, setSelect] = useState("");
 
   const fetchData = (searchString) => {
     fetch(
@@ -23,7 +24,6 @@ const App = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setExercises(data);
       })
       .catch((err) => {
@@ -36,25 +36,17 @@ const App = () => {
       match.toUpperCase()
     );
 
-  const onTextChange = (event) => {
-    clearTimeout(timeoutId);
-    setSearch(event.target.value);
-    const timeout = setTimeout(
-      () => fetchData(event.target.value.toLowerCase()),
-      500
-    );
-    updateTimeoutId(timeout);
+  const handleChange = (event) => {
+    setSelect(event.target.value);
+
+    fetchData(event.target.value);
   };
-  let length = search.length;
+
   return (
     <Router basename="/">
-      <Header onTextChange={onTextChange} />
+      <Header select={select} handleChange={handleChange} />
 
-      <ExerciseList
-        exercises={exercises}
-        capitalize={capitalize}
-        length={length}
-      />
+      <ExerciseList exercises={exercises} capitalize={capitalize} />
     </Router>
   );
 };
