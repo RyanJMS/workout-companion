@@ -31,7 +31,7 @@ export default function Header({ onTextChange, handleChange, select }) {
                 component="div"
                 sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
               >
-                Workout Companion
+                Home
               </Typography>
             </Link>
             <Link to="/exercises" className="link">

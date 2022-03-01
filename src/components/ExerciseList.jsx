@@ -9,14 +9,21 @@ import {
   CssBaseline,
   Container,
   FormControl,
-  InputLabel,
+  Button,
   Select,
   MenuItem,
 } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import StarIcon from "@mui/icons-material/Star";
 
-const ExerciseList = ({ exercises, capitalize, select, handleChange }) => {
+const ExerciseList = ({
+  exercises,
+  capitalize,
+  select,
+  handleChange,
+  addFavouriteExercise,
+}) => {
   useEffect(() => {
     AOS.init({
       // Global settings:
@@ -47,14 +54,10 @@ const ExerciseList = ({ exercises, capitalize, select, handleChange }) => {
           display: "flex",
           margin: "auto",
           position: "relative",
-          marginBottom: "20px",
-          left: "50%",
+          justifyContent: "center",
         }}
       >
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label" style={{ color: "black" }}>
-            Muscle Group
-          </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -66,7 +69,11 @@ const ExerciseList = ({ exercises, capitalize, select, handleChange }) => {
               "&:hover": {
                 backgroundColor: "#7C98B3",
               },
+
               width: "200px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginBottom: "20px",
             }}
           >
             <MenuItem value="back">Back</MenuItem>
@@ -88,19 +95,29 @@ const ExerciseList = ({ exercises, capitalize, select, handleChange }) => {
         <Grid container spacing={2} justifyContent="center">
           {exercises?.map((exercise, index) => (
             <Grid item xs={12} sm={6} md={3} data-aos="fade-in">
-              <Card elevation={6} className="card" style={{ height: 400 }}>
+              <Card
+                key={index}
+                elevation={6}
+                className="card"
+                style={{ height: 400 }}
+              >
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <CardMedia
                     style={{ height: 250, width: 250 }}
                     image={exercise.gifUrl}
                     alt={exercise.name}
-                    key={index}
                   />
                 </div>
                 <CardContent>
                   <Typography gutterBottom variant="h5" align="center">
                     {capitalize(exercise.name)}
                   </Typography>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button onClick={() => addFavouriteExercise(exercise)}>
+                      Add to Favourites
+                      <StarIcon />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </Grid>

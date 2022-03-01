@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import ExerciseList from "./components/ExerciseList";
 import Home from "./components/Home";
 import FavouriteList from "./components/FavouriteList";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 
 const App = () => {
   const [exercises, setExercises] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [select, setSelect] = useState("");
 
   const fetchData = (searchString) => {
@@ -31,6 +37,15 @@ const App = () => {
       });
   };
 
+  useEffect(() => {
+    const exerciseFavourites = JSON.parse(localStorage.getItem("favourites"));
+    setFavourites(exerciseFavourites);
+  }, []);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("favourites", JSON.stringify(items));
+  };
+
   const capitalize = (str, lower = false) =>
     (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
       match.toUpperCase()
@@ -42,11 +57,26 @@ const App = () => {
     fetchData(event.target.value);
   };
 
+  const addFavouriteExercise = (exercise) => {
+    const newFavouritesList = [...favourites, exercise];
+    setFavourites(newFavouritesList);
+    saveToLocalStorage(newFavouritesList);
+  };
+
+  const removeFavouriteExercise = (exercise) => {
+    const newFavouritesList = favourites.filter(
+      (favourite) => favourite.id !== exercise.id
+    );
+    setFavourites(newFavouritesList);
+    saveToLocalStorage(newFavouritesList);
+  };
+
   return (
-    <Router>
+    <Router basename="/">
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Navigate replace to="/home" />} />
+        <Route path="/home" element={<Home />} />
         <Route
           exact
           path="/exercises"
@@ -56,10 +86,21 @@ const App = () => {
               capitalize={capitalize}
               handleChange={handleChange}
               select={select}
+              addFavouriteExercise={addFavouriteExercise}
             />
           }
         />
-        <Route exact path="/favourites" element={<FavouriteList />} />
+        <Route
+          exact
+          path="/favourites"
+          element={
+            <FavouriteList
+              favourites={favourites}
+              capitalize={capitalize}
+              removeFavouriteExercise={removeFavouriteExercise}
+            />
+          }
+        />
       </Routes>
     </Router>
   );

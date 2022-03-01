@@ -11,6 +11,11 @@ body {
   background: #cee5f2 !important;
 }
 
+.carousel {
+  height: 50%;
+  width: 40%;
+}
+
 .link {
   text-decoration: none;
   color: white;

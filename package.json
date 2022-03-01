@@ -1,6 +1,5 @@
 {
   "name": "workout-companion",
-  "homepage": "https://ryanjms.github.io/workout-companion/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +11,7 @@
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^3.0.0-beta.6",
+    "bootstrap": "^5.1.3",
     "gh-pages": "^3.2.3",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
