@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import ExerciseList from "./components/ExerciseList";
+import Home from "./components/Home";
+import FavouriteList from "./components/FavouriteList";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [exercises, setExercises] = useState([]);
-  const [search, setSearch] = useState("");
-  const [timeoutId, updateTimeoutId] = useState();
   const [select, setSelect] = useState("");
 
   const fetchData = (searchString) => {
@@ -43,10 +43,24 @@ const App = () => {
   };
 
   return (
-    <Router basename="/">
-      <Header select={select} handleChange={handleChange} />
-
-      <ExerciseList exercises={exercises} capitalize={capitalize} />
+    <Router>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/exercises"
+          element={
+            <ExerciseList
+              exercises={exercises}
+              capitalize={capitalize}
+              handleChange={handleChange}
+              select={select}
+            />
+          }
+        />
+        <Route exact path="/favourites" element={<FavouriteList />} />
+      </Routes>
     </Router>
   );
 };

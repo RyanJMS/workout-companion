@@ -8,11 +8,15 @@ import {
   Typography,
   CssBaseline,
   Container,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const ExerciseList = ({ exercises, capitalize }) => {
+const ExerciseList = ({ exercises, capitalize, select, handleChange }) => {
   useEffect(() => {
     AOS.init({
       // Global settings:
@@ -38,9 +42,50 @@ const ExerciseList = ({ exercises, capitalize }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <div
+        style={{
+          display: "flex",
+          margin: "auto",
+          position: "relative",
+          marginBottom: "20px",
+          left: "50%",
+        }}
+      >
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label" style={{ color: "black" }}>
+            Muscle Group
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Muscle Group"
+            value={select}
+            onChange={handleChange}
+            style={{
+              backgroundColor: "#7C98B3",
+              "&:hover": {
+                backgroundColor: "#7C98B3",
+              },
+              width: "200px",
+            }}
+          >
+            <MenuItem value="back">Back</MenuItem>
+            <MenuItem value="cardio">Cardio</MenuItem>
+            <MenuItem value="chest">Chest</MenuItem>
+            <MenuItem value="lower arms">Lower Arms</MenuItem>
+            <MenuItem value="lower legs">Lower Legs</MenuItem>
+            <MenuItem value="neck">Neck</MenuItem>
+            <MenuItem value="shoulders">Shoulders</MenuItem>
+            <MenuItem value="upper arms">Upper Arms</MenuItem>
+            <MenuItem value="upper legs">Upper Legs</MenuItem>
+            <MenuItem value="waist">Waist</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+
       <CssBaseline />
       <Container>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={2} justifyContent="center">
           {exercises?.map((exercise, index) => (
             <Grid item xs={12} sm={6} md={3} data-aos="fade-in">
               <Card elevation={6} className="card" style={{ height: 400 }}>
