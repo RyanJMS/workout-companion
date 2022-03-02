@@ -4,12 +4,7 @@ import ExerciseList from "./components/ExerciseList";
 import Home from "./components/Home";
 import FavouriteList from "./components/FavouriteList";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [exercises, setExercises] = useState([]);
@@ -36,6 +31,11 @@ const App = () => {
         console.error(err);
       });
   };
+
+  // useEffect(() => {
+  //   const exerciseFavourites = JSON.parse(localStorage.getItem("favourites"));
+  //   setFavourites(exerciseFavourites);
+  // }, []);
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("favourites", JSON.stringify(items));
@@ -71,8 +71,7 @@ const App = () => {
     <Router basename="/">
       <Header />
       <Routes>
-        <Route exact path="/" element={<Navigate replace to="/home" />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
           exact
           path="/exercises"
