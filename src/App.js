@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import ExerciseList from "./components/ExerciseList";
 import Home from "./components/Home";
@@ -32,10 +32,14 @@ const App = () => {
       });
   };
 
-  // useEffect(() => {
-  //   const exerciseFavourites = JSON.parse(localStorage.getItem("favourites"));
-  //   setFavourites(exerciseFavourites);
-  // }, []);
+  useEffect(() => {
+    const exerciseFavourites = JSON.parse(localStorage.getItem("favourites"));
+    let length = exerciseFavourites.length;
+
+    if (length > 0) {
+      setFavourites(exerciseFavourites);
+    }
+  }, []);
 
   const saveToLocalStorage = (items) => {
     localStorage.setItem("favourites", JSON.stringify(items));
