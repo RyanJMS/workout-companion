@@ -58,7 +58,8 @@ const App = () => {
   };
 
   const addFavouriteExercise = (exercise) => {
-    const newFavouritesList = [...favourites, exercise];
+    const newFavouritesList = favourites;
+    favourites.push(exercise);
     saveToLocalStorage(newFavouritesList);
     setFavourites(newFavouritesList);
   };
