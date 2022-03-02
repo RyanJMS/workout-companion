@@ -37,11 +37,6 @@ const App = () => {
       });
   };
 
-  useEffect(() => {
-    const exerciseFavourites = JSON.parse(localStorage.getItem("favourites"));
-    setFavourites(exerciseFavourites);
-  }, []);
-
   const saveToLocalStorage = (items) => {
     localStorage.setItem("favourites", JSON.stringify(items));
   };
