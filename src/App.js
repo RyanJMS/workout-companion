@@ -59,8 +59,8 @@ const App = () => {
 
   const addFavouriteExercise = (exercise) => {
     const newFavouritesList = [...favourites, exercise];
-    setFavourites(newFavouritesList);
     saveToLocalStorage(newFavouritesList);
+    setFavourites(newFavouritesList);
   };
 
   const removeFavouriteExercise = (exercise) => {
