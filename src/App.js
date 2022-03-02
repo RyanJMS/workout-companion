@@ -34,10 +34,13 @@ const App = () => {
 
   useEffect(() => {
     const exerciseFavourites = JSON.parse(localStorage.getItem("favourites"));
-    let length = exerciseFavourites.length;
-
-    if (length > 0) {
-      setFavourites(exerciseFavourites);
+    try {
+      let length = exerciseFavourites.length;
+      if (length > 0) {
+        setFavourites(exerciseFavourites);
+      }
+    } catch (e) {
+      console.error(e);
     }
   }, []);
 
