@@ -49,7 +49,7 @@ const FavouriteList = ({ capitalize, favourites, removeFavouriteExercise }) => {
                 key={index}
                 elevation={6}
                 className="card"
-                style={{ height: 400 }}
+                style={{ height: "500px" }}
               >
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <CardMedia
@@ -63,12 +63,14 @@ const FavouriteList = ({ capitalize, favourites, removeFavouriteExercise }) => {
                     {capitalize(favourite.name)}
                   </Typography>
                 </CardContent>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <Button onClick={() => removeFavouriteExercise(favourite)}>
-                    Remove from Favourites
-                    <CloseIcon />
-                  </Button>
-                </div>
+                <CardContent>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button onClick={() => removeFavouriteExercise(favourite)}>
+                      Remove from Favourites
+                      <CloseIcon />
+                    </Button>
+                  </div>
+                </CardContent>
               </Card>
             </Grid>
           ))}

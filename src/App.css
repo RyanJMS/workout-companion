@@ -11,6 +11,21 @@ body {
   background: #cee5f2 !important;
 }
 
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.centered {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: -webkit-linear-gradient(rgb(0, 0, 0), rgb(0, 150, 250));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .carousel {
   height: 50%;
   width: 40%;

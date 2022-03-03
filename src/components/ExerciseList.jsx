@@ -91,7 +91,7 @@ const ExerciseList = ({
       </div>
 
       <CssBaseline />
-      <Container>
+      <Container style={{ marginBottom: "20px" }}>
         <Grid container spacing={2} justifyContent="center">
           {exercises?.map((exercise, index) => (
             <Grid item xs={12} sm={6} md={3} data-aos="fade-in">
@@ -99,19 +99,22 @@ const ExerciseList = ({
                 key={index}
                 elevation={6}
                 className="card"
-                style={{ height: 400 }}
+                style={{ height: "500px" }}
               >
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <CardMedia
                     style={{ height: 250, width: 250 }}
                     image={exercise.gifUrl}
                     alt={exercise.name}
+                    description={exercise.name}
                   />
                 </div>
                 <CardContent>
                   <Typography gutterBottom variant="h5" align="center">
                     {capitalize(exercise.name)}
                   </Typography>
+                </CardContent>
+                <CardContent>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <Button onClick={() => addFavouriteExercise(exercise)}>
                       Add to Favourites
