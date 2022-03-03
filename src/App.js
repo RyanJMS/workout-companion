@@ -11,6 +11,8 @@ const App = () => {
   const [favourites, setFavourites] = useState([]);
   const [select, setSelect] = useState("");
 
+  const mybutton = document.querySelector(".scrollBtn");
+
   const fetchData = (searchString) => {
     fetch(
       `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${searchString}`,
@@ -74,6 +76,26 @@ const App = () => {
     saveToLocalStorage(newFavouritesList);
   };
 
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  const scrollToTop = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  };
+
   return (
     <Router basename="/">
       <Header />
@@ -89,6 +111,7 @@ const App = () => {
               handleChange={handleChange}
               select={select}
               addFavouriteExercise={addFavouriteExercise}
+              scrollToTop={scrollToTop}
             />
           }
         />
@@ -100,6 +123,7 @@ const App = () => {
               favourites={favourites}
               capitalize={capitalize}
               removeFavouriteExercise={removeFavouriteExercise}
+              scrollToTop={scrollToTop}
             />
           }
         />
