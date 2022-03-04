@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import "../App.css";
-import bg from "../assets/images/bg.jpg";
+import bg from "../assets/images/bg.png";
 
 const Home = () => {
   return (
