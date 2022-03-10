@@ -121,7 +121,6 @@ const ExerciseList = ({
                       style={{
                         display: "flex",
                         justifyContent: "center",
-                        height: 100,
                       }}
                     >
                       <Button onClick={() => addFavouriteExercise(exercise)}>

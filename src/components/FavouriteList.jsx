@@ -68,7 +68,6 @@ const FavouriteList = ({ capitalize, favourites, removeFavouriteExercise }) => {
                     style={{
                       display: "flex",
                       justifyContent: "center",
-                      height: 100,
                     }}
                   >
                     <Button onClick={() => removeFavouriteExercise(favourite)}>
