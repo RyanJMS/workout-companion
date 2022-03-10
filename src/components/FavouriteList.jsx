@@ -39,7 +39,7 @@ const FavouriteList = ({ capitalize, favourites, removeFavouriteExercise }) => {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, marginBottom: "20px" }}>
       <CssBaseline />
       <Container>
         <Grid container spacing={2} justifyContent="center">
