@@ -58,13 +58,19 @@ const FavouriteList = ({ capitalize, favourites, removeFavouriteExercise }) => {
                     alt={favourite.name}
                   />
                 </div>
-                <CardContent>
+                <CardContent style={{ height: 200 }}>
                   <Typography gutterBottom variant="h5" align="center">
                     {capitalize(favourite.name)}
                   </Typography>
                 </CardContent>
                 <CardContent>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      height: 100,
+                    }}
+                  >
                     <Button onClick={() => removeFavouriteExercise(favourite)}>
                       Remove from Favourites
                       <CloseIcon />

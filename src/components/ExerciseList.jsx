@@ -111,13 +111,19 @@ const ExerciseList = ({
                       description={exercise.name}
                     />
                   </div>
-                  <CardContent>
+                  <CardContent style={{ height: 200 }}>
                     <Typography gutterBottom variant="h5" align="center">
                       {capitalize(exercise.name)}
                     </Typography>
                   </CardContent>
                   <CardContent>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        height: 100,
+                      }}
+                    >
                       <Button onClick={() => addFavouriteExercise(exercise)}>
                         Add to Favourites
                         <StarIcon />
